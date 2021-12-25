@@ -1,0 +1,38 @@
+﻿<Window x:Class="TravelGuideApp.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelGuideApp.PageDataContexts"
+        mc:Ignorable="d"
+        Title="Главная страница" Height="650" Width="1000">
+
+    <Window.DataContext>
+        <local:AdminWindowDataContext/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Source="/Resources/moscowHeaderTop.png" Width="2500" Height="300" Margin="0,-100,0,0" Grid.RowSpan="2" />
+        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="40" Margin="10"  FontSize="20" Content="Личный кабинет"
+                Command="{Binding PersonalAccountCommand}" Background="Aqua"/>
+        <Grid Background="Aqua" Grid.Row="1"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+            <Rectangle Width="1" Fill="Black" Margin="0 5 0 5"/>
+            <Button Content="Достопримечательности" FontSize="20" Background="Transparent" BorderBrush="Transparent" Margin="15 0"
+                    FontFamily="Comic Sans MS" Command="{Binding OpenPlacesAdminPageCommand}"/>
+            <Rectangle Width="1" Fill="Black" Margin="0 5 0 5"/>
+            <Button Content="Маршруты" FontSize="20" Background="Transparent" BorderBrush="Transparent" Margin="15 0"
+                    FontFamily="Comic Sans MS" Command="{Binding OpenRoutesAdminPageCommand}"/>
+            <Rectangle Width="1" Fill="Black" Margin="0 5 0 5"/>
+            <Button Content="Метро" FontSize="20" Background="Transparent" BorderBrush="Transparent" Margin="15 0"
+                    FontFamily="Comic Sans MS"/>
+            <Rectangle Width="1" Fill="Black" Margin="0 5 0 5"/>
+        </StackPanel>
+        <Frame Grid.Row="2" Name="MainFrame"/>
+    </Grid>
+</Window>

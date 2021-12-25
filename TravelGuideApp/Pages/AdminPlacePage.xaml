@@ -1,0 +1,42 @@
+﻿<Page x:Class="TravelGuideApp.Pages.AdminPlacePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TravelGuideApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminPlacePage">
+
+    <ScrollViewer>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBlock Text="Тип достопримечательности" FontFamily="Comic Sans MS" Margin="15 15 5 5" FontSize="25"/>
+                <ComboBox ItemsSource="{Binding ListPlacesTypes}"
+                          DisplayMemberPath="NameType"
+                          SelectedValuePath="IdType"
+                          SelectedValue="{Binding Place.IdType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                FontFamily="Comic Sans MS" Margin="15 5 15 10" FontSize="20"/>
+            <TextBlock Text="Название" FontFamily="Comic Sans MS" Margin="15 0 5 5" FontSize="25"/>
+            <TextBox Text="{Binding Place.NamePlace, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Comic Sans MS" Margin="15 5 15 10" FontSize="20"/>
+            <TextBlock Text="Описание" FontFamily="Comic Sans MS" Margin="15 0 5 5" FontSize="25"/>
+            <TextBox Text="{Binding Place.Descr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Comic Sans MS" FontSize="20" Margin="15 5 15 10" TextWrapping="Wrap" Height="100"/>
+            <TextBlock Text="Адрес" FontFamily="Comic Sans MS" Margin="15 0 5 5" FontSize="25"/>
+            <TextBox Text="{Binding Place.AddressPlace, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Comic Sans MS" Margin="15 5 15 10" FontSize="20"
+                                   TextWrapping="Wrap"/>
+            <TextBlock Text="Координаты" FontFamily="Comic Sans MS" Margin="15 0 5 5" FontSize="25"/>
+                <TextBox Text="{Binding Place.Coordinates, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Comic Sans MS" Margin="15 5 15 10" FontSize="20"/>
+                <Rectangle Fill="Black" Height="1" Margin="15 0 0 0"/>
+                <Button Content="Сохранить изменения" Width="300" FontFamily="Comic Sans MS" Margin="15 5 15 10" FontSize="20" Command="{Binding SaveChangesCommand}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Image Source="{Binding PicturePlace}" Margin="0 10 0 0" Width="320" Height="300"/>
+                <Button Content="Сменить фото" FontFamily="Comic Sans MS" Margin="5 0 5 0" Height="40" FontSize="20" Width="320" Command="{Binding AddNewPhotoCommand}"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>
