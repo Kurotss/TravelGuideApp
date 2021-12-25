@@ -117,6 +117,7 @@ namespace TravelGuideApp.PageDataContexts
 		public void SaveChanges()
 		{
 			RouteProcedures.SaveChanges(Route.IdRoute, Route.NameRoute, Route.Descr, Route.Picture);
+			if (Route.IdRoute != null)
 			RouteProcedures.DeleteListOfPlaces((int)Route.IdRoute);
 			foreach (Place place in RoutePlaces)
 			{
